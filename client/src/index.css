@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* @theme ব্লকে কাস্টম কালার ও ফন্ট সেট করা হচ্ছে */
 @theme {
   /* Colors */
   --color-neon-blue: #0ff0fc;
