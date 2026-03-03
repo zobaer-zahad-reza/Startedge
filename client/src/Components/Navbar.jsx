@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Logo from "../assets/StartedgeLogo.png";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,9 +16,9 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#" },
-    { name: "Services", href: "#" },
-    { name: "Courses", href: "#" },
+    { name: "Home", href: "/" },
+    { name: "Services", href: "services" },
+    { name: "Courses", href: "courses" },
     { name: "Subscriptions", href: "#" },
     { name: "Portfolio", href: "#" },
     { name: "Social Impact", href: "#" },
@@ -111,14 +112,14 @@ const Navbar = () => {
       >
         <div className="px-4 pt-2 pb-6 space-y-2 shadow-inner">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
-              href={link.href}
+              to={link.href}
               className="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-cyan-50 hover:text-cyan-600 rounded-xl transition-all"
               onClick={() => setIsOpen(false)}
             >
               {link.name}
-            </a>
+            </Link>
           ))}
           <div className="pt-4 px-4">
             <button className="w-full bg-cyan-600 text-white py-3 rounded-xl font-bold">
