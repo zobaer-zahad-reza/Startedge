@@ -2,6 +2,7 @@ import React from "react";
 import Marquee from "react-fast-marquee";
 import Card from "../Components/Card";
 import SubscriptionCatagory from "../Components/SubscriptionCatagory";
+import subImge from "../assets/SubsPromo.jpeg";
 
 export default function Subscriptions() {
   const productsItems = [
@@ -98,8 +99,8 @@ export default function Subscriptions() {
   return (
     <div className="max-w-11/12 mx-auto">
       <img
-        className="w-full h-[250px] md:h-[400px] object-cover rounded-lg"
-        src="https://i0.wp.com/picjumbo.com/wp-content/uploads/green-natural-background-with-wooden-surface-free-image.jpeg?w=2210&quality=70"
+        className="w-full h-[250px] md:h-[500px] object-fill rounded-lg"
+        src={subImge}
         alt=""
       />
 

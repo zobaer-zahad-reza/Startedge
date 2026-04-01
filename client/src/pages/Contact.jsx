@@ -249,14 +249,14 @@ const Contact = () => {
         {/* Stats Section */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-24 text-center">
           {[
-            { label: "Venture Satisfaction", value: "99%" },
-            { label: "Avg. Response Time", value: "2h" },
-            { label: "Dedicated Support", value: "24/7" },
-            { label: "Startups Scaled", value: "500+" },
+            { label: "Venture Satisfaction", value: 99, suffix: "%" },
+            { label: "Avg. Response Time", value: 2, suffix: "h" },
+            { label: "Dedicated Support", value: 24, suffix: "/7" },
+            { label: "Startups Scaled", value: 500, suffix: "+" },
           ].map((stat) => (
             <div key={stat.label}>
               <p className="text-4xl font-extrabold text-blue-950 mb-1.5">
-                <CountUp end={parseInt(stat.value)} duration={4} />
+                <CountUp end={stat.value} suffix={stat.suffix} duration={4} />
               </p>
               <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest">
                 {stat.label}
