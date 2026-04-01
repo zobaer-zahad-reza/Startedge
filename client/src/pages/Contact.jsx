@@ -1,4 +1,5 @@
 import React from "react";
+import CountUp from "react-countup";
 
 const infoCardsData = [
   {
@@ -64,7 +65,7 @@ const infoCardsData = [
       </svg>
     ),
     title: "Main Office",
-    value: "43 Mohakhali C/A, Dhaka 1212",
+    value: "325-A, 3rd Floor, South Jatrabari, Kalam Mansion, Dhaka-1204",
     details: "Bangladesh Operations Hub",
   },
 ];
@@ -72,7 +73,7 @@ const infoCardsData = [
 const Contact = () => {
   return (
     <div className="bg-slate-50 text-gray-800 font-sans">
-      <main className="max-w-7xl mx-auto px-6 py-16">
+      <main className="max-w-11/12 mx-auto px-6 py-16">
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-5xl font-extrabold text-blue-950 mb-6">
@@ -107,7 +108,7 @@ const Contact = () => {
         <div className="rounded-3xl shadow-lg border-4 border-white mb-24 overflow-hidden relative z-10">
           <iframe
             title="Google Map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14601.594776100781!2d90.41258604724838!3d23.784795904838637!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7b3967814b9%3A0xe5a3c990b76922ed!2sScaleUp%20Ads%20Agency!5e0!3m2!1sen!2sbd!4v1716386819448!5m2!1sen!2sbd"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d913.2617240577612!2d90.43490824915885!3d23.71001928783085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b9832a8e6de1%3A0xf56086bb57f00a2e!2z4Ka54KeL4Kau4Ka_4KaTIOCmuOCngeCmuOCnjeCmrOCmvuCmuOCnjeCmpeCnjeCmryDgpqrgprDgpr_gpprgprDgp43gpq_gpr4g4Kar4Ka-4Kaw4KeN4Kau4KeH4Ka44KeA!5e0!3m2!1sen!2sbd!4v1775026272315!5m2!1sen!2sbd"
             width="100%"
             height="450"
             style={{ border: 0 }}
@@ -246,7 +247,7 @@ const Contact = () => {
         </div> */}
 
         {/* Stats Section */}
-        {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-24 text-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-24 text-center">
           {[
             { label: "Venture Satisfaction", value: "99%" },
             { label: "Avg. Response Time", value: "2h" },
@@ -255,14 +256,14 @@ const Contact = () => {
           ].map((stat) => (
             <div key={stat.label}>
               <p className="text-4xl font-extrabold text-blue-950 mb-1.5">
-                {stat.value}
+                <CountUp end={parseInt(stat.value)} duration={4} />
               </p>
               <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest">
                 {stat.label}
               </p>
             </div>
           ))}
-        </div> */}
+        </div>
       </main>
     </div>
   );

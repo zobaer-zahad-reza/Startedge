@@ -58,7 +58,6 @@ const Navbar = () => {
                   {({ isActive }) => (
                     <>
                       {link.name}
-                      {/* Bottom animated line - Active state এ সম্পূর্ণ width নিবে */}
                       <span
                         className={`absolute bottom-0 left-0 h-0.5 bg-cyan-500 transition-all duration-300 ${
                           isActive ? "w-full" : "w-0 group-hover:w-full"
