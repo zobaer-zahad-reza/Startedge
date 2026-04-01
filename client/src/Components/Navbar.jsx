@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Logo from "../assets/StartedgeLogo.png";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,10 +19,10 @@ const Navbar = () => {
     { name: "Services", href: "services" },
     { name: "Courses", href: "courses" },
     { name: "Subscriptions", href: "subscriptions" },
-    { name: "Portfolio", href: "#" },
-    { name: "Social Impact", href: "#" },
-    { name: "About", href: "#" },
-    { name: "Contact", href: "#" },
+    { name: "Portfolio", href: "portfolio" },
+    { name: "Social Impact", href: "socialimpact" },
+    { name: "About", href: "about" },
+    { name: "Contact", href: "contact" },
   ];
 
   return (
@@ -35,24 +35,24 @@ const Navbar = () => {
     >
       <div className=" mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo Section - Hover scaling effect */}
+          {/* Logo Section */}
           <div className="flex-shrink-0 transition-transform duration-300 hover:scale-105">
             <img className="w-44 md:w-52" src={Logo} alt="Startedge Logo" />
           </div>
 
-          {/* Desktop Menu - Modern font & hover state */}
+          {/* Desktop Menu */}
           <div className="hidden lg:block">
             <div className="ml-10 flex items-center space-x-1">
               {navLinks.map((link) => (
-                <a
+                <NavLink
                   key={link.name}
-                  href={link.href}
+                  to={link.href}
                   className="relative group px-4 py-2 text-sm font-semibold text-gray-700 hover:text-cyan-600 transition-colors duration-300"
                 >
                   {link.name}
                   {/* Bottom animated line */}
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-500 transition-all duration-300 group-hover:w-full"></span>
-                </a>
+                </NavLink>
               ))}
 
               {/* Optional: Add a 'Get Started' button for better UX */}
@@ -103,7 +103,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu - Clean slide-down effect */}
+      {/* Mobile Menu */}
       <div
         className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
           isOpen ? "max-height-screen opacity-100" : "max-h-0 opacity-0"

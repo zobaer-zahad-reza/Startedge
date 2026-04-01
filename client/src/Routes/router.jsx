@@ -5,6 +5,10 @@ import Home from "../pages/Home";
 import Services from "../pages/Services";
 import Courses from "../pages/Courses";
 import Subscriptions from "../pages/Subscriptions";
+import Portfolio from "../pages/Portfolio";
+import SocialImpact from "../pages/SocialImpact";
+import About from "../pages/About";
+import Contact from "../pages/Contact";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +30,22 @@ const router = createBrowserRouter([
       {
         path: "/subscriptions",
         Component: Subscriptions,
+      },
+      {
+        path: "/portfolio",
+        Component: Portfolio,
+      },
+      {
+        path: "/socialimpact",
+        Component: SocialImpact,
+      },
+      {
+        path: "/about",
+        Component: About,
+      },
+      {
+        path: "/contact",
+        Component: Contact,
       },
     ],
   },
