@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Logo from "../assets/StartedgeLogo.png";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,7 +33,7 @@ const Navbar = () => {
           : "bg-white py-4"
       }`}
     >
-      <div className=" mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo Section */}
           <div className="flex-shrink-0 transition-transform duration-300 hover:scale-105">
@@ -47,18 +47,27 @@ const Navbar = () => {
                 <NavLink
                   key={link.name}
                   to={link.href}
-                  className="relative group px-4 py-2 text-sm font-semibold text-gray-700 hover:text-cyan-600 transition-colors duration-300"
+                  className={({ isActive }) =>
+                    `relative group px-4 py-2 text-sm font-semibold transition-colors duration-300 ${
+                      isActive
+                        ? "text-cyan-600"
+                        : "text-gray-700 hover:text-cyan-600"
+                    }`
+                  }
                 >
-                  {link.name}
-                  {/* Bottom animated line */}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-500 transition-all duration-300 group-hover:w-full"></span>
+                  {({ isActive }) => (
+                    <>
+                      {link.name}
+                      {/* Bottom animated line - Active state এ সম্পূর্ণ width নিবে */}
+                      <span
+                        className={`absolute bottom-0 left-0 h-0.5 bg-cyan-500 transition-all duration-300 ${
+                          isActive ? "w-full" : "w-0 group-hover:w-full"
+                        }`}
+                      ></span>
+                    </>
+                  )}
                 </NavLink>
               ))}
-
-              {/* Optional: Add a 'Get Started' button for better UX */}
-              {/* <button className="ml-4 bg-cyan-600 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-cyan-700 transition-all shadow-md hover:shadow-cyan-200">
-                Join Now
-              </button> */}
             </div>
           </div>
 
@@ -111,14 +120,20 @@ const Navbar = () => {
       >
         <div className="px-4 pt-2 pb-6 space-y-2 shadow-inner">
           {navLinks.map((link) => (
-            <Link
+            <NavLink
               key={link.name}
               to={link.href}
-              className="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-cyan-50 hover:text-cyan-600 rounded-xl transition-all"
               onClick={() => setIsOpen(false)}
+              className={({ isActive }) =>
+                `block px-4 py-3 text-base font-medium rounded-xl transition-all ${
+                  isActive
+                    ? "bg-cyan-50 text-cyan-600"
+                    : "text-gray-700 hover:bg-cyan-50 hover:text-cyan-600"
+                }`
+              }
             >
               {link.name}
-            </Link>
+            </NavLink>
           ))}
           <div className="pt-4 px-4">
             <button className="w-full bg-cyan-600 text-white py-3 rounded-xl font-bold">
