@@ -4,6 +4,7 @@ import MainLayout from "../MainLayout/MainLayout";
 import Home from "../pages/Home";
 import Services from "../pages/Services";
 import Courses from "../pages/Courses";
+import Subscriptions from "../pages/Subscriptions";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/courses",
         Component: Courses,
+      },
+      {
+        path: "/subscriptions",
+        Component: Subscriptions,
       },
     ],
   },

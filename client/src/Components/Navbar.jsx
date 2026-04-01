@@ -6,7 +6,6 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Scroll korle navbar e shadow/blur effect er jonno
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -19,7 +18,7 @@ const Navbar = () => {
     { name: "Home", href: "/" },
     { name: "Services", href: "services" },
     { name: "Courses", href: "courses" },
-    { name: "Subscriptions", href: "#" },
+    { name: "Subscriptions", href: "subscriptions" },
     { name: "Portfolio", href: "#" },
     { name: "Social Impact", href: "#" },
     { name: "About", href: "#" },
