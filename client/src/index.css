@@ -9,9 +9,10 @@
   --color-dark-bg: #0a0a1a;
   --color-light-bg: #1a1a2e;
 
-  /* Fonts */
+  /* Fonts - Register Poppins here so font-poppins works */
   --font-orbitron: 'Orbitron', sans-serif;
   --font-rajdhani: 'Rajdhani', sans-serif;
+  --font-poppins: 'Poppins', sans-serif;
 
   /* Animations */
   --animate-spin-slow: spin 3s linear infinite;
@@ -19,18 +20,70 @@
 }
 
 /* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;500;700&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-/* Custom Base Styles */
-/* body {
-  @apply bg-dark-bg text-white font-rajdhani overflow-x-hidden;
-} */
+/* --- Base Styles --- */
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-h1, h2, h3, h4 {
-  @apply font-orbitron font-bold uppercase tracking-widest;
+  body {
+    @apply font-poppins text-gray-900 bg-white;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-orbitron font-bold uppercase tracking-widest;
+  }
 }
 
-/* Custom Animation Classes */
+/* --- Component Classes --- */
+/* In v4, you can just write standard CSS or use @utility */
+@utility btn-primary {
+  @apply bg-red-600 text-white font-semibold px-6 py-3 rounded-lg
+         transition-all duration-200 hover:bg-red-700 hover:-translate-y-0.5
+         active:translate-y-0 inline-flex items-center gap-2 cursor-pointer;
+}
+
+@utility btn-outline {
+  @apply border-2 border-red-600 text-red-600 font-semibold px-6 py-3 rounded-lg
+         transition-all duration-200 hover:bg-red-600 hover:text-white
+         inline-flex items-center gap-2 cursor-pointer;
+}
+
+@utility form-input {
+  /* This now works because --font-poppins is in @theme */
+  @apply w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm
+         outline-none transition-all duration-200 focus:border-red-500
+         bg-white font-poppins;
+}
+
+@utility section-badge {
+  @apply bg-red-100 text-red-600 px-4 py-1.5 rounded-full text-xs font-semibold
+         uppercase tracking-wider;
+}
+
+@utility card {
+  @apply bg-white rounded-xl p-7 shadow-sm border border-gray-100
+         transition-transform duration-200 hover:-translate-y-1;
+}
+
+@utility nav-link {
+  @apply text-gray-600 text-sm font-medium px-3 py-1.5 rounded-md
+         transition-all duration-200 hover:text-red-600 hover:bg-red-50;
+}
+
+@utility text-gradient {
+  background: linear-gradient(135deg, #C62828, #E53935);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* --- Custom Animations & Effects --- */
 .glow-effect {
   position: relative;
 }
@@ -47,32 +100,15 @@ h1, h2, h3, h4 {
   opacity: 0.7;
 }
 
-/* Glitch Animation Keyframes */
 @keyframes glitch {
-  0% { text-shadow: 0.05em 0 0 rgba(255, 0, 255, 0.75), -0.05em -0.025em 0 rgba(0, 255, 255, 0.75); }
-  14% { text-shadow: 0.05em 0 0 rgba(255, 0, 255, 0.75), -0.05em -0.025em 0 rgba(0, 255, 255, 0.75); }
-  15% { text-shadow: -0.05em -0.025em 0 rgba(255, 0, 255, 0.75), 0.025em 0.025em 0 rgba(0, 255, 255, 0.75); }
-  49% { text-shadow: -0.05em -0.025em 0 rgba(255, 0, 255, 0.75), 0.025em 0.025em 0 rgba(0, 255, 255, 0.75); }
-  50% { text-shadow: 0.025em 0.05em 0 rgba(255, 0, 255, 0.75), 0.05em 0 0 rgba(0, 255, 255, 0.75), -0.025em -0.05em 0 rgba(0, 255, 0, 0.75); }
-  99% { text-shadow: 0.025em 0.05em 0 rgba(255, 0, 255, 0.75), 0.05em 0 0 rgba(0, 255, 255, 0.75), -0.025em -0.05em 0 rgba(0, 255, 0, 0.75); }
-  100% { text-shadow: -0.025em 0 0 rgba(255, 0, 255, 0.75), -0.025em -0.025em 0 rgba(0, 255, 255, 0.75), -0.025em -0.05em 0 rgba(0, 255, 0, 0.75); }
+  0%, 14% { text-shadow: 0.05em 0 0 rgba(255, 0, 255, 0.75), -0.05em -0.025em 0 rgba(0, 255, 255, 0.75); }
+  15%, 49% { text-shadow: -0.05em -0.025em 0 rgba(255, 0, 255, 0.75), 0.025em 0.025em 0 rgba(0, 255, 255, 0.75); }
+  50%, 99% { text-shadow: 0.025em 0.05em 0 rgba(255, 0, 255, 0.75), 0.05em 0 0 rgba(0, 255, 255, 0.75), -0.025em -0.05em 0 rgba(0, 255, 0, 0.75); }
+  100% { text-shadow: -0.025em 0 0 rgba(255, 0, 255, 0.75), -0.025em -0.025em 0 rgba(255, 0, 255, 0.75), -0.025em -0.05em 0 rgba(0, 255, 0, 0.75); }
 }
 
-/* Custom Utility Class for Animation */
-.animate-glitch {
-  animation: glitch 2s infinite alternate;
-}
-
-/* 3D Flip Card Utilities */
-.perspective-1000 {
-  perspective: 1000px;
-}
-.transform-style-3d {
-  transform-style: preserve-3d;
-}
-.backface-hidden {
-  backface-visibility: hidden;
-}
-.rotate-y-180 {
-  transform: rotateY(180deg);
-}
+/* Utilities for 3D Cards */
+@utility perspective-1000 { perspective: 1000px; }
+@utility transform-style-3d { transform-style: preserve-3d; }
+@utility backface-hidden { backface-visibility: hidden; }
+@utility rotate-y-180 { transform: rotateY(180deg); }
